@@ -10,11 +10,18 @@ export default function Home() {
         <p className="text-lg text-negroprofundo text-center max-w-md">
           Un lugar donde enviar cartas a la antigua
         </p>
-        <button
-          className="mt-6 px-8 py-3 rounded-full bg-burdeos text-white font-semibold text-lg shadow-lg hover:bg-[#a13a4a] transition"
-        >
-          Envía tu carta
-        </button>
+        <div className="flex gap-4 mt-8">
+          <a href="/cartas">
+            <button className="px-6 py-3 rounded-full bg-burdeos text-white font-bold shadow hover:bg-[#a13a4a] transition cursor-pointer">
+              Ver cartas disponibles
+            </button>
+          </a>
+          <a href="/nueva-carta">
+            <button className="px-6 py-3 rounded-full bg-amarillo text-burdeos font-bold shadow border border-burdeos hover:bg-yellow-300 transition cursor-pointer">
+              Agregar nueva carta
+            </button>
+          </a>
+        </div>
       </main>
     </div>
   );
