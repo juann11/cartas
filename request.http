@@ -1,0 +1,8 @@
+POST http://localhost:3000/api/firestore
+Content-Type: application/json
+
+{
+    "data": {
+        "nombre": "Dusty old dust"
+    }
+}
