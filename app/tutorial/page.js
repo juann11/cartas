@@ -82,7 +82,7 @@ export default firebase_app;`}
                         </li>
                     </ol>
                     <div className="mb-2">
-                        <div className="font-semibold text-[#8B2C3B] mb-1">// signup.js</div>
+                        <div className="font-semibold text-[#8B2C3B] mb-1">signup.js</div>
                         <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 overflow-x-auto">
                             {`import firebase_app from "../config";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
@@ -99,7 +99,7 @@ export default async function signUp(email, password) {
                         </pre>
                     </div>
                     <div>
-                        <div className="font-semibold text-[#8B2C3B] mb-1">// signin.js</div>
+                        <div className="font-semibold text-[#8B2C3B] mb-1">signin.js</div>
                         <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 overflow-x-auto">
                             {`import firebase_app from "../config";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
