@@ -28,7 +28,7 @@ export default function Cartas() {
                     </Link>
                 </div>
                 {loading ? (
-                    <p className="text-[#f3f3e6]">Cargando cartas...</p>
+                    <p className="text-black-[#f3f3e6]">Cargando cartas...</p>
                 ) : (
                     <ul className="space-y-6">
                         {cartas.map((carta) => (
