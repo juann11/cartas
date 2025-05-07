@@ -48,7 +48,7 @@ export default function NuevaCarta() {
                 </div>
                 <button
                     type="submit"
-                    className="px-6 py-2 rounded-full bg-burdeos text-white font-bold shadow hover:bg-[#a13a4a] transition cursor-pointer"
+                    className="px-6 py-2 rounded-full bg-burdeos text-white font-bold shadow bg-[#a13a4a] transition cursor-pointer"
                     disabled={loading}
                 >
                     {loading ? "Enviando..." : "Enviar carta"}

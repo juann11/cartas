@@ -12,12 +12,12 @@ export default function Home() {
         </p>
         <div className="flex gap-4 mt-8">
           <a href="/cartas">
-            <button className="px-6 py-3 rounded-full bg-burdeos text-white font-bold shadow hover:bg-[#a13a4a] transition cursor-pointer">
+            <button className="px-6 py-3 rounded-full bg-burdeos text-white font-bold shadow bg-[#a13a4a] transition cursor-pointer">
               Ver cartas disponibles
             </button>
           </a>
           <a href="/nueva-carta">
-            <button className="px-6 py-3 rounded-full bg-amarillo text-burdeos font-bold shadow border border-burdeos hover:bg-yellow-300 transition cursor-pointer">
+            <button className="px-6 py-3 rounded-full bg-amarillo text-burdeos font-bold shadow border border-burdeos bg-yellow-300 transition cursor-pointer">
               Agregar nueva carta
             </button>
           </a>

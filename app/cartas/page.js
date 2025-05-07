@@ -13,15 +13,16 @@ export default function Cartas() {
                 setCartas(data);
                 setLoading(false);
             });
-    }, []);
+    },
+        []);
 
     return (
-        <div className="min-h-screen bg-[#181818]">
+        <div className="min-h-screen">
             <div className="max-w-4xl mx-auto py-10 px-4">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
-                    <h1 className="text-3xl font-bold text-[#f3f3e6]">Cartas disponibles</h1>
+                    <h1 className="text-3xl font-bold text-amber-900">Cartas disponibles</h1>
                     <Link href="/nueva-carta">
-                        <button className="px-6 py-2 rounded-full bg-burdeos text-white font-bold shadow hover:bg-[#a13a4a] transition cursor-pointer">
+                        <button className="px-6 py-2 rounded-full bg-burdeos text-white font-bold shadow bg-[#a13a4a] transition cursor-pointer">
                             Enviar nueva carta
                         </button>
                     </Link>
