@@ -1,10 +1,10 @@
 export default function Tutorial() {
     return (
-        <div className="min-h-screen bg-[#f8f5f0] py-10 px-2 flex justify-center">
+        <div className="min-h-screen py-10 px-2 flex justify-center">
             <div className="w-full max-w-3xl bg-white/90 rounded-xl shadow-xl p-8 border border-[#e2d6c2]">
                 <h1 className="text-3xl font-bold text-[#8B2C3B] mb-2 text-center drop-shadow">Conectando Next con Firestore de Firebase</h1>
                 <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">0. Instalar Firebase CLI</h2>
+                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">0. [OPCIONAL] Instalar Firebase CLI</h2>
                     <p className="mb-4 text-[#181818]">
                         Primero necesitamos instalar la interfaz de línea de comandos (CLI) de Firebase. Esta herramienta nos permitirá interactuar con Firebase desde la terminal.
                     </p>
@@ -41,13 +41,13 @@ export default function Tutorial() {
                         <li>
                             Ve a <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer" className="underline text-[#8B2C3B]">Firebase Console</a> y crea un nuevo proyecto.
                         </li>
-                        <li>Agrega una app web y copia la configuración.</li>
-                        <li>Instala Firebase en tu proyecto:</li>
+                        <li>Agrega una app web y copia la configuración, te servirá más adelante. De momento puedes darle a continuar</li>
+                        <li>Instala Firebase en tu proyecto, para ello corre el siguiente comando en la carpeta raíz. (Si el comando no lo reconoce, intenta ejecutarlo en una terminal de gitBash)</li>
                     </ol>
                     <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 mb-2 overflow-x-auto">npm install firebase</pre>
                     <ol start={4} className="list-decimal list-inside mb-2 text-[#181818]">
                         <li>
-                            Crea un archivo <b>.env.local</b> en la raíz y pega tus variables:
+                            Crea un archivo <b>.env.local</b> en la raíz y pega tus variables. Acá deberás agregar los valores que encuentras luego del paso 2
                         </li>
                     </ol>
                     <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 mb-2 overflow-x-auto">
@@ -61,22 +61,24 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=tu-analytic-id`}
                     </pre>
                     <ol start={5} className="list-decimal list-inside mb-2 text-[#181818]">
                         <li>
-                            Crea una carpeta <b>firebase</b> y un archivo <b>config.js</b>:
+                            En la raíz del proyecto, crea una carpeta <b>firebase</b> y un archivo <b>firebase.js</b>, en él vas a pegar lo siguiente:
                         </li>
                     </ol>
                     <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 mb-2 overflow-x-auto">
-                        {`import { initializeApp, getApps } from "firebase/app";
+                        {`import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
-const firebase_app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-export default firebase_app;`}
+
+const app = initializeApp(firebaseConfig);
+
+export default app;`}
                     </pre>
                 </section>
 

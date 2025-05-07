@@ -21,6 +21,11 @@ export default function Home() {
               Agregar nueva carta
             </button>
           </a>
+          <a href="/tutorial">
+            <button className="px-6 py-3 rounded-full bg-[#bfa77a] text-white font-bold shadow transition cursor-pointer">
+              Ir al tutorial
+            </button>
+          </a>
         </div>
       </main>
     </div>
