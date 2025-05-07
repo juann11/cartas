@@ -2,34 +2,41 @@ export default function Tutorial() {
     return (
         <div className="min-h-screen bg-[#f8f5f0] py-10 px-2 flex justify-center">
             <div className="w-full max-w-3xl bg-white/90 rounded-xl shadow-xl p-8 border border-[#e2d6c2]">
-                <h1 className="text-3xl font-bold text-[#8B2C3B] mb-2 text-center drop-shadow">Cómo crear una app full stack con Next.js 13 y Firebase</h1>
-                <p className="text-center mb-8 text-[#6b4f2c]">
-                    Basado en el tutorial original de freeCodeCamp:{" "}
-                    <a
-                        href="https://www.freecodecamp.org/news/create-full-stack-app-with-nextjs13-and-firebase/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline text-[#8B2C3B] hover:text-[#a13a4a]"
-                    >
-                        How to Build a Full Stack App with Next.js 13 and Firebase
-                    </a>
-                </p>
-
+                <h1 className="text-3xl font-bold text-[#8B2C3B] mb-2 text-center drop-shadow">Conectando Next con Firestore de Firebase</h1>
                 <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">1. Crear un proyecto Next.js 13</h2>
-                    <ol className="list-decimal list-inside mb-2 text-[#181818]">
-                        <li>Abre tu terminal y ejecuta:</li>
+                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">0. Instalar Firebase CLI</h2>
+                    <p className="mb-4 text-[#181818]">
+                        Primero necesitamos instalar la interfaz de línea de comandos (CLI) de Firebase. Esta herramienta nos permitirá interactuar con Firebase desde la terminal.
+                    </p>
+                    <ol className="list-decimal list-inside mb-2 text-[#181818] space-y-6">
+                        <li className="mb-4">
+                            Instala Firebase CLI globalmente usando npm:
+                            <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 mt-2 mb-2 overflow-x-auto">
+                                {`npm install -g firebase-tools`}
+                            </pre>
+                        </li>
+                        <li className="mb-4">
+                            Inicia sesión en Firebase:
+                            <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 mt-2 mb-2 overflow-x-auto">
+                                {`firebase login`}
+                            </pre>
+                            <p className="mt-2 text-[#181818]">
+                                Esto abrirá una ventana del navegador donde deberás iniciar sesión con tu cuenta de Google. Una vez que hayas iniciado sesión, podrás usar el CLI de Firebase para interactuar con tu proyecto.
+                            </p>
+                        </li>
+                        <li className="mb-4">
+                            Inicia el proyecto de Firebase (En la raíz de tu proyecto):
+                            <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 mt-2 mb-2 overflow-x-auto">
+                                {`firebase init`}
+                            </pre>
+                            <p className="mt-2 text-[#181818]">
+                                Esto te pedirá que selecciones el tipo de proyecto que quieres inicializar. En este caso, selecciona "Firestore: Database" (con espacio y luego enter), las otras opciones las puedes dejar por defecto.
+                            </p>
+                        </li>
                     </ol>
-                    <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 mb-2 overflow-x-auto">
-                        {`npx create-next-app@latest --experimental-app
-cd nombre-de-tu-proyecto
-npm run dev`}
-                    </pre>
-                    <p className="mb-0">Esto iniciará el servidor en <b>http://localhost:3000</b>.</p>
                 </section>
-
                 <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">2. Configurar Firebase en Next.js</h2>
+                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">1. Configurar Firebase en Next.js</h2>
                     <ol className="list-decimal list-inside mb-2 text-[#181818]">
                         <li>
                             Ve a <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer" className="underline text-[#8B2C3B]">Firebase Console</a> y crea un nuevo proyecto.
@@ -71,64 +78,6 @@ const firebaseConfig = {
 const firebase_app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 export default firebase_app;`}
                     </pre>
-                </section>
-
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">3. Autenticación con Firebase</h2>
-                    <ol className="list-decimal list-inside mb-2 text-[#181818]">
-                        <li>En la consola de Firebase, activa el método de autenticación que prefieras (por ejemplo, Email/Password).</li>
-                        <li>
-                            Crea funciones para registro e inicio de sesión en <b>firebase/auth/signup.js</b> y <b>firebase/auth/signin.js</b>:
-                        </li>
-                    </ol>
-                    <div className="mb-2">
-                        <div className="font-semibold text-[#8B2C3B] mb-1">signup.js</div>
-                        <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 overflow-x-auto">
-                            {`import firebase_app from "../config";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-const auth = getAuth(firebase_app);
-export default async function signUp(email, password) {
-  let result = null, error = null;
-  try {
-    result = await createUserWithEmailAndPassword(auth, email, password);
-  } catch (e) {
-    error = e;
-  }
-  return { result, error };
-}`}
-                        </pre>
-                    </div>
-                    <div>
-                        <div className="font-semibold text-[#8B2C3B] mb-1">signin.js</div>
-                        <pre className="bg-[#f3e6c1] text-[#8B2C3B] rounded p-3 overflow-x-auto">
-                            {`import firebase_app from "../config";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
-const auth = getAuth(firebase_app);
-export default async function signIn(email, password) {
-  let result = null, error = null;
-  try {
-    result = await signInWithEmailAndPassword(auth, email, password);
-  } catch (e) {
-    error = e;
-  }
-  return { result, error };
-}`}
-                        </pre>
-                    </div>
-                </section>
-
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">4. Páginas de registro e inicio de sesión</h2>
-                    <p>
-                        Crea <b>app/signup/page.js</b> y <b>app/signin/page.js</b> con formularios que usen las funciones anteriores.
-                    </p>
-                </section>
-
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-[#bfa77a] mb-2">5. Contexto de autenticación</h2>
-                    <p>
-                        Usa React Context para compartir el usuario autenticado en toda la app. Crea <b>src/context/AuthContext.js</b> y envuelve tu layout con el provider.
-                    </p>
                 </section>
 
                 <section className="mb-8">
